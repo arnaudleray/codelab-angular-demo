@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Employee } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { EmployeeService } from '../../services/employee.service';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees;
+  employees: Employee[];
+  isLoading: boolean;
 
   constructor(
     private router: Router,
@@ -18,7 +20,17 @@ export class EmployeeListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.employees = this.employeeService.getEmployeesMock();
+    this.isLoading = true;
+    this.employeeService.getEmployees().subscribe(
+      (employees: Employee[]) => {
+        this.employees = employees;
+        this.isLoading = false;
+      },
+      (error: any) => {
+        this.isLoading = false;
+        console.error(error);
+      }
+    );
   }
 
   goToInfo(employee) {

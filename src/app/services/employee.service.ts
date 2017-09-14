@@ -1,49 +1,28 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
-const EMPLOYEES = [
-  {
-    'id': 1,
-    'firstName': 'Amy',
-    'lastName': 'Taylor',
-    'title': 'CEO',
-    'phone': '617-123-4567',
-    'mobilePhone': '617-987-6543',
-    'email': 'amy@fakemail.com',
-    'picture': 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/amy_taylor.jpg'
-  },
-  {
-    'id': 2,
-    'firstName': 'Anup',
-    'lastName': 'Gupta',
-    'title': 'VP of Engineering',
-    'managerId': 1,
-    'managerName': 'Amy Taylor',
-    'phone': '617-123-4567',
-    'mobilePhone': '617-987-6543',
-    'email': 'anup@fakemail.com',
-    'picture': 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/anup_gupta.jpg'
-  },
-  {
-    'id': 3,
-    'firstName': 'Michael',
-    'lastName': 'Jones',
-    'title': 'VP of Marketing',
-    'managerId': 1,
-    'managerName': 'Amy Taylor',
-    'phone': '617-123-4567',
-    'mobilePhone': '617-987-6543',
-    'email': 'michael@fakemail.com',
-    'picture': 'https://s3-us-west-1.amazonaws.com/sfdc-demo/people/michael_jones.jpg'
-  },
-];
+import { Employee } from '../models/employee.model';
+
+const BASE_URL = 'https://employee-directory-services.herokuapp.com';
+// const BASE_URL = 'http://localhost:3000'; // For local JSON-Server
+const EMPLOYEES = [ /* contenu précédent */];
 
 @Injectable()
 export class EmployeeService {
-
   constructor(
+    private http: HttpClient // Nouveau client HTTP depuis Angular 4.3
   ) { }
 
-  getEmployeesMock() {
+  getEmployeesMock(): Employee[] {
     return EMPLOYEES;
+  }
+
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${BASE_URL}/employees`);
+  }
+
+  getEmployee(employeeId: number): Observable<Employee> {
+    return this.http.get<Employee>(`${BASE_URL}/employees/${employeeId}`);
   }
 }
