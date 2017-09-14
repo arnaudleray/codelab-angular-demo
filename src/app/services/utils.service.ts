@@ -1,10 +1,15 @@
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UtilsService {
 
-  constructor() { }
+  public isBrowser: boolean = isPlatformBrowser(this.platform_id);
+
+  constructor(
+    @Inject(PLATFORM_ID) private platform_id,
+  ) { }
 
   toPromise<T>(observable: Observable<T>): Promise<T> {
     const promise = new Promise<T>((resolve, reject) => {
