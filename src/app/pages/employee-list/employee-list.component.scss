@@ -1,0 +1,17 @@
+.employee-item {
+  line-height: 110px;
+  display: block;
+  width: 100%;
+  &:hover {
+    background-color: #EEE;
+    cursor: pointer;
+  }
+}
+.employee-img {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 5px 5px 5px 0;
+  background-color: #DDD;
+  font-size: 11px; // Pour le texte alternatif
+}

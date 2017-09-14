@@ -1,3 +1,15 @@
-<p>
-  employee-list works!
-</p>
+<h2>Liste des employés</h2>
+
+<div *ngIf="!isLoading;else loading">
+  <div *ngIf="employees;else noEmployee">
+    <div *ngFor="let employee of employees; count as nbEmployees; index as i" class="employee-item" (click)="goToInfo(employee)">
+      <!-- [routerLink]="['/employees', employee.id]" -->
+      <img [src]="employee.picture" alt="Photo de {{ employee.firstName }} {{ employee.lastName }}" class="employee-img">
+      <div class="employee-info">
+        {{i+1}}/{{nbEmployees}} - {{ employee.firstName }} {{ employee.lastName }}
+      </div>
+    </div>
+  </div>
+  <ng-template #noEmployee>Aucun employé.</ng-template>
+</div>
+<ng-template #loading>Chargement...</ng-template>
