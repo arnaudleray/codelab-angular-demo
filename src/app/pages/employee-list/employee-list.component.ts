@@ -19,18 +19,15 @@ export class EmployeeListComponent implements OnInit {
     private employeeService: EmployeeService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.isLoading = true;
-    this.employeeService.getEmployees().subscribe(
-      (employees: Employee[]) => {
-        this.employees = employees;
-        this.isLoading = false;
-      },
-      (error: any) => {
-        this.isLoading = false;
-        console.error(error);
-      }
-    );
+    try {
+      this.employees = await this.employeeService.getEmployees();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   goToInfo(employee) {

@@ -1,3 +1,4 @@
+import { UtilsService } from './utils.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
@@ -11,18 +12,19 @@ const EMPLOYEES = [ /* contenu précédent */];
 @Injectable()
 export class EmployeeService {
   constructor(
-    private http: HttpClient // Nouveau client HTTP depuis Angular 4.3
+    private http: HttpClient, // Nouveau client HTTP depuis Angular 4.3
+    private utils: UtilsService
   ) { }
 
   getEmployeesMock(): Employee[] {
     return EMPLOYEES;
   }
 
-  getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${BASE_URL}/employees`);
+  getEmployees(): Promise<Employee[]> {
+    return this.utils.toPromise(this.http.get<Employee[]>(`${BASE_URL}/employees`));
   }
 
-  getEmployee(employeeId: number): Observable<Employee> {
-    return this.http.get<Employee>(`${BASE_URL}/employees/${employeeId}`);
+  getEmployee(employeeId: number): Promise<Employee> {
+    return this.utils.toPromise(this.http.get<Employee>(`${BASE_URL}/employees/${employeeId}`));
   }
 }
