@@ -16,7 +16,7 @@ import { EmployeeService } from './services/employee.service';
     EmployeeInfoComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'codelab-angular' }),
     AppRoutingModule,
     HttpClientModule
   ],

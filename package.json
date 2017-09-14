@@ -5,7 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:server": "ts-node src/server.js",
     "build": "ng build",
+    "build:client": "ng build --prod",
+    "build:server": "ng build --prod --app app-server --output-hashing none",
+    "universal": "npm run build:client && npm run build:server && npm run start:server",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -29,6 +33,7 @@
     "@angular/cli": "1.4.1",
     "@angular/compiler-cli": "^4.2.4",
     "@angular/language-service": "^4.2.4",
+    "@angular/platform-server": "^4.3.6",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
