@@ -1,3 +1,10 @@
-<p>
-  employee-info works!
-</p>
+<h2>Infos de l'employé</h2>
+
+<div *ngIf="employee">
+  <img [attr.src]="employee.picture" alt="Photo de {{ employee.firstName }} {{ employee.lastName }}" class="employee-img">
+  <div class="employee-info">
+    <p>{{ employee.firstName }} {{ employee.lastName }}</p>
+    <p>{{ employee.title }}</p>
+    <p>{{ employee.email }}</p>
+  </div>
+</div>
