@@ -1,3 +1,4 @@
+import { BrowserTransferStateModule } from '../modules/transfer-state/browser-transfer-state.module';
 import { UtilsService } from './services/utils.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,7 @@ import { EmployeeService } from './services/employee.service';
   imports: [
     BrowserModule.withServerTransition({ appId: 'codelab-angular' }),
     AppRoutingModule,
+    BrowserTransferStateModule,
     HttpClientModule
   ],
   providers: [

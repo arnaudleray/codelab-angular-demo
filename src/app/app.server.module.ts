@@ -1,3 +1,4 @@
+import { ServerTransferStateModule } from '../modules/transfer-state/server-transfer-state.module';
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 
@@ -8,6 +9,7 @@ import { AppModule } from './app.module';
   imports: [
     AppModule,
     ServerModule,
+    ServerTransferStateModule,
   ],
   bootstrap: [AppComponent],
 })
