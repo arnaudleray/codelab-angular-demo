@@ -1,1 +1,1 @@
-web: npm run universal
+web: ng serve --port $PORT
