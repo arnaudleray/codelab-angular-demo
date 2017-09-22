@@ -7,9 +7,10 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run start:server",
+    "serve": "ng serve",
     "start:server": "ts-node src/server.js",
-    "build": "ng build",
+    "build": "npm run build:client && npm run build:server",
     "build:client": "ng build --prod",
     "build:server": "ng build --prod --app app-server --output-hashing none",
     "universal": "npm run build:client && npm run build:server && npm run start:server",
