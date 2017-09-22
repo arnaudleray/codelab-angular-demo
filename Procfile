@@ -1,1 +1,1 @@
-web: ng serve --port $PORT
+web: npm run build:client && npm run start:server-not-universal

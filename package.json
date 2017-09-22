@@ -10,6 +10,7 @@
     "start": "npm run start:server",
     "serve": "ng serve",
     "start:server": "ts-node src/server.js",
+    "start:server-not-universal": "ts-node src/server-not-universal.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "ng build --prod --app app-client",
     "build:server": "ng build --prod --app app-server --output-hashing none",
