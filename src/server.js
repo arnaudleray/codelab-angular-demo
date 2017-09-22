@@ -9,7 +9,7 @@ var readFileSync = require('fs').readFileSync;
 var join = require('path').join;
 
 const HOST = '0.0.0.0';
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 enableProdMode();
 
