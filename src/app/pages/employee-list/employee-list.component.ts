@@ -27,12 +27,12 @@ export class EmployeeListComponent implements OnInit {
   ) {
     this.title.setTitle('Liste des employés');
     this.meta.addTags([
-      { name: 'keywords', content: 'angular universal, ssl, codelab, employees' },
+      { name: 'keywords', content: 'angular universal, ssr, codelab, employees' },
       { name: 'description', content: 'Liste des employés pour illustrer le Codelab' },
       { property: 'og:site_name', content: 'Codelab Angular' },
       { property: 'og:type', content: 'article' },
-      { property: 'og:url', content: '...' },
-      { property: 'og:title', content: 'Accueil - Bonduelle Food Service' },
+      { property: 'og:url', content: 'https://codelab-angular-universal.herokuapp.com/employees' },
+      { property: 'og:title', content: 'CodeLab Angular - Liste des employés' },
     ]);
   }
 
